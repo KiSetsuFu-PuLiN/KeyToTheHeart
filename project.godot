@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Scene",
+"language": "GDScript",
+"path": "res://class/scene.gd"
+} ]
+_global_script_class_icons={
+"Scene": ""
+}
+
+[application]
+
+config/name="心之匙"
+run/main_scene="res://main.tscn"
+config/icon="res://doll.png"
+
+[autoload]
+
+FileManager="*res://auto_load/file_manager.gd"
+GameControl="*res://auto_load/game_control.gd"
+GameConfig="*res://auto_load/game_config.gd"
+GlobalTranslation="*res://auto_load/global_translation.gd"
+AudioControl="*res://auto_load/audio_control.gd"
+Client="*res://auto_load/client.gd"
+
+[display]
+
+window/size/width=1080
+window/size/height=1920
+window/size/test_width=540
+window/size/test_height=960
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[global]
+
+"导入"=false
+"字"=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+theme/custom_font="res://resource/font/font.tres"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/enable_pause_aware_picking=true

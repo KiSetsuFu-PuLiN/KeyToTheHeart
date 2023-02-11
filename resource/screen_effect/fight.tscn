@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resource/image/tachie/stranger_a_human.png" type="Texture" id=1]
+[ext_resource path="res://resource/image/icon/pointer.webp" type="Texture" id=2]
+[ext_resource path="res://resource/image/icon/circle.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func _ready():
+	$Pointer.modulate = Color(1,1,1,0)
+	$Pointer.rotation = atan2($StopPoint.position.y - $StratPoint.position.y, $StopPoint.position.x - $StratPoint.position.x)
+	set_process(false)
+	set_process_input(false)
+	# test
+	#tart()
+	return
+
+# 这里的point是玩家点击的位置,time是玩家点击的时间
+var start_point:Vector2
+var start_time:float
+var stop_point:Vector2
+var stop_time:float
+var drag_trace:PoolVector2Array
+func _input(event):
+	if event is InputEventScreenTouch:
+		if event.is_pressed():
+			start_point = event.position
+			start_time = -$Timer.time_left + shirink_time*timeout_count
+		else:
+			stop_point = event.position
+			stop_time = -$Timer.time_left + shirink_time*timeout_count
+			finish()
+	elif event is InputEventScreenDrag:
+		drag_trace.append(event.position)
+	return
+
+# 光圈初始大小
+export var init_radius:float = 1500
+export var line_width:float = 50
+# 光圈收缩需要的时间
+export var shirink_time:float = 2
+func _draw():
+	if timeout_count == 0:
+		var start_point_list:PoolVector2Array = []
+		var stop_point_list:PoolVector2Array = []
+		for i in range(361):
+			var rad:float = 2*PI*i/360
+			var point:Vector2 = Vector2(cos(rad),sin(rad))*init_radius
+			start_point_list.append(point*$Timer.time_left + $StratPoint.position)
+			stop_point_list.append(point*$Timer.time_left + $StopPoint.position)
+		draw_polyline(start_point_list,Color(1,1,1,1),line_width)
+		draw_polyline(stop_point_list,Color(1,1,1,1),line_width)
+	else:
+		pass
+		set_process(false)
+	return
+
+var timeout_count:int = 0
+# warning-ignore:unused_argument
+func _process(delta):
+	update()
+	return
+
+func start()->void:
+	yield(get_tree().create_tween().tween_property(self,\"modulate\",Color(1,1,1,1),1),\"finished\")
+	set_process(true)
+	set_process_input(true)
+	$Timer.start(shirink_time)
+	$Tween.interpolate_property($Pointer, \"position\",
+			$StratPoint.position, $StopPoint.position, shirink_time,
+			Tween.TRANS_QUINT, Tween.EASE_IN_OUT,shirink_time/2)
+	$Tween.start()
+	# warning-ignore:return_value_discarded
+	get_tree().create_tween().tween_method(self,\"_set_Pointer_alpha\",-PI/2,PI/2,shirink_time).set_delay(shirink_time/2)
+	return
+func finish()->void:
+	set_process(false)
+	set_process_input(false)
+	$Timer.stop()
+	self.visible = false
+	GameControl.start_cg_immediately(\"Black\")
+	GameControl.emit_signal(\"screen_effect_finished\")
+	
+	$\"/root/Main\".Fight = 1000/(abs(start_time)+abs(stop_time))
+	$\"/root/Main\".Fight /= (start_point-$StratPoint.position).length_squared()/1000
+	$\"/root/Main\".Fight /= (stop_point-$StopPoint.position).length_squared()/1000
+	
+	return
+
+func _set_Pointer_alpha(value:float)->void:
+	$Pointer.modulate.a = pow(cos(value),5)
+	return
+func _on_Timer_timeout():
+	timeout_count += 1
+	return
+"
+
+[node name="Fight" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -445.0
+margin_top = -1346.0
+margin_right = 429.0
+margin_bottom = 116.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="StratPoint" type="Sprite" parent="."]
+position = Vector2( 902, 345 )
+scale = Vector2( 0.612, 0.612 )
+texture = ExtResource( 3 )
+
+[node name="StopPoint" type="Sprite" parent="."]
+position = Vector2( 212, 1449 )
+scale = Vector2( 0.628, 0.628 )
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Pointer" type="Sprite" parent="."]
+position = Vector2( 3, 0 )
+texture = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

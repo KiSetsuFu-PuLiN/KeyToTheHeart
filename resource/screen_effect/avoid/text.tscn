@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resource/font/font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Area2D
+
+export var quality:bool setget set_quality
+export var text:String setget set_text
+var speed:float = 1
+
+func _process(delta):
+	self.position.x -= delta*speed
+	return
+
+func set_text(t:String)->void:
+	text = t
+	$Label.set_text(t)
+	var size:Vector2 = $Label.rect_size
+	$Label.rect_position = Vector2(0, -size.y/2)
+	$CollisionShape2D.position = Vector2(size.x/2, 0)
+	$VisibilityNotifier2D.position = Vector2(size.x/2, 0)
+	$CollisionShape2D.shape.extents = size/2
+	$VisibilityNotifier2D.rect = Rect2(0,-size.y/2,size.x,size.y/2)
+	speed = rand_range(200,1000)
+	self.scale *= rand_range(1,2)
+	return
+
+func set_quality(q:bool)->void:
+	quality = q
+	if q:
+		$Label.modulate = Color(\"#66ccff\")
+	else:
+		pass
+	return
+
+func _on_screen_exited():
+	self.queue_free()
+	return
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 52, 25.625 )
+
+[node name="Node2D" type="Area2D"]
+monitoring = false
+script = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -27.0
+margin_right = 193.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 1 )
+text = "aasdassa"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 57, 1 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 61, 3 )
+scale = Vector2( 5.2, 2.75 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited"]

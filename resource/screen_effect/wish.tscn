@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+export var text_duration:float = 1
+var text_list:Array = [
+		\"微弱的火光摇曳，映照着爱丽的脸颊，\\n带来些许温暖\",
+		\"一同悸动的，还有少女那终于不再感到冷寂的心\",
+		\"一直埋藏在心底的话却始终没有勇气说出口\",
+		\"只能让这愿望，化作最真挚的祝福……\",
+]
+func start()->void:
+	$Label.modulate = Color(1,1,1,0)
+	$Label.visible = true
+	yield(get_tree().create_tween().tween_property(self,\"modulate\",Color(1,1,1,1),text_duration),\"finished\")
+	for text in text_list:
+		$Label.text = text
+		yield(get_tree().create_tween().tween_property($Label,\"modulate\",Color(1,1,1,1),text_duration),\"finished\")
+		yield(get_tree().create_timer(text_duration*2),\"timeout\")
+		yield(get_tree().create_tween().tween_property($Label,\"modulate\",Color(1,1,1,0),text_duration),\"finished\")
+	yield(get_tree().create_tween().tween_property(self,\"modulate\",Color(1,1,1,0),text_duration),\"finished\")
+	self.visible = false
+	GameControl.emit_signal(\"screen_effect_finished\")
+	return
+"
+
+[node name="Wish" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -25.5
+margin_bottom = 25.5
+text = "微弱的火光摇曳，映照着爱丽的脸颊
+带来些许温暖"
+align = 1
+autowrap = true

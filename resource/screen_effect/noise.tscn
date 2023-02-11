@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resource/shader/noise.shader" type="Shader" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+export var duration:float = 0.5
+func start()->void:
+	yield(get_tree().create_timer(duration),\"timeout\")
+	self.visible = false
+	GameControl.emit_signal(\"screen_effect_finished\")
+	AudioControl.play_se(\"unease_noise.wav\")
+	return
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/amount = 40.0
+
+[node name="Noise" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0

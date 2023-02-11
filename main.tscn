@@ -1,0 +1,1365 @@
+[gd_scene load_steps=101 format=2]
+
+[ext_resource path="res://script/main.gd" type="Script" id=1]
+[ext_resource path="res://script/ui.gd" type="Script" id=2]
+[ext_resource path="res://script/dialog.gd" type="Script" id=3]
+[ext_resource path="res://script/screen_effect.gd" type="Script" id=4]
+[ext_resource path="res://script/puzzle.gd" type="Script" id=5]
+[ext_resource path="res://script/settings.gd" type="Script" id=6]
+[ext_resource path="res://script/about.gd" type="Script" id=7]
+[ext_resource path="res://resource/screen_effect/pv.tscn" type="PackedScene" id=8]
+[ext_resource path="res://script/tachie.gd" type="Script" id=9]
+[ext_resource path="res://script/text.gd" type="Script" id=10]
+[ext_resource path="res://resource/image/tachie/test.png" type="Texture" id=11]
+[ext_resource path="res://resource/scene/park.gd" type="Script" id=12]
+[ext_resource path="res://resource/scene/warehouse.gd" type="Script" id=13]
+[ext_resource path="res://script/cg.gd" type="Script" id=14]
+[ext_resource path="res://resource/image/background/pedestrian_street.png" type="Texture" id=15]
+[ext_resource path="res://resource/sound/bgm/06.mp3" type="AudioStream" id=16]
+[ext_resource path="res://resource/image/tachie/pulin.png" type="Texture" id=17]
+[ext_resource path="res://resource/image/cg/hospital.jpeg" type="Texture" id=18]
+[ext_resource path="res://resource/image/cg/school_corridor.png" type="Texture" id=19]
+[ext_resource path="res://resource/image/cg/bloodstained_doll.png" type="Texture" id=21]
+[ext_resource path="res://resource/scene/pedestrian_street.gd" type="Script" id=25]
+[ext_resource path="res://resource/scene/blank.gd" type="Script" id=26]
+[ext_resource path="res://resource/scene/road.gd" type="Script" id=27]
+[ext_resource path="res://resource/scene/touch_to_start.gd" type="Script" id=28]
+[ext_resource path="res://resource/scene/room_of_eli.gd" type="Script" id=29]
+[ext_resource path="res://resource/scene/house_of_family.gd" type="Script" id=30]
+[ext_resource path="res://resource/scene/forest.gd" type="Script" id=31]
+[ext_resource path="res://resource/scene/home_of_treehole.gd" type="Script" id=32]
+[ext_resource path="res://resource/image/icon/arrow.png" type="Texture" id=33]
+[ext_resource path="res://resource/image/icon/i_will.png" type="Texture" id=34]
+[ext_resource path="res://resource/image/background/touch_to_start.png" type="Texture" id=35]
+[ext_resource path="res://resource/image/background/infirmary.webp" type="Texture" id=36]
+[ext_resource path="res://resource/image/background/school.jpg" type="Texture" id=37]
+[ext_resource path="res://script/up_menu.gd" type="Script" id=38]
+[ext_resource path="res://resource/image/background/blank.webp" type="Texture" id=39]
+[ext_resource path="res://resource/image/item/doll.png" type="Texture" id=40]
+[ext_resource path="res://resource/image/icon/triangle.png" type="Texture" id=41]
+[ext_resource path="res://resource/screen_effect/opening.tscn" type="PackedScene" id=42]
+[ext_resource path="res://resource/screen_effect/wish.tscn" type="PackedScene" id=43]
+[ext_resource path="res://resource/screen_effect/fight.tscn" type="PackedScene" id=44]
+[ext_resource path="res://resource/screen_effect/avoid.tscn" type="PackedScene" id=45]
+[ext_resource path="res://resource/screen_effect/ending.tscn" type="PackedScene" id=46]
+[ext_resource path="res://resource/sound/bgm/02.wav" type="AudioStream" id=47]
+[ext_resource path="res://resource/sound/bgm/04.wav" type="AudioStream" id=48]
+[ext_resource path="res://resource/sound/bgm/01.wav" type="AudioStream" id=49]
+[ext_resource path="res://resource/sound/bgm/03.wav" type="AudioStream" id=50]
+[ext_resource path="res://resource/sound/bgm/00.wav" type="AudioStream" id=51]
+[ext_resource path="res://script/bgm.gd" type="Script" id=52]
+[ext_resource path="res://script/auto_replay.gd" type="Script" id=53]
+[ext_resource path="res://resource/screen_effect/noise.tscn" type="PackedScene" id=54]
+[ext_resource path="res://resource/sound/bgm/05.mp3" type="AudioStream" id=55]
+[ext_resource path="res://resource/image/tachie/stranger_a.png" type="Texture" id=57]
+[ext_resource path="res://resource/image/tachie/teacher.png" type="Texture" id=58]
+[ext_resource path="res://resource/image/tachie/mother.png" type="Texture" id=59]
+[ext_resource path="res://resource/image/tachie/father.png" type="Texture" id=60]
+[ext_resource path="res://resource/image/tachie/stranger_a_human.png" type="Texture" id=62]
+[ext_resource path="res://resource/image/tachie/mr_rabbit.png" type="Texture" id=64]
+[ext_resource path="res://resource/image/tachie/chesh.png" type="Texture" id=65]
+[ext_resource path="res://resource/image/tachie/stranger_a_headless.png" type="Texture" id=66]
+[ext_resource path="res://resource/image/tachie/white_default.png" type="Texture" id=67]
+[ext_resource path="res://resource/image/tachie/black_default.png" type="Texture" id=68]
+[ext_resource path="res://resource/image/tachie/coffee_machine.png" type="Texture" id=69]
+[ext_resource path="res://resource/image/tachie/eli_default.png" type="Texture" id=70]
+[ext_resource path="res://resource/image/tachie/stranger_c.png" type="Texture" id=71]
+[ext_resource path="res://resource/image/tachie/stranger_b.png" type="Texture" id=72]
+[ext_resource path="res://resource/image/tachie/stranger_b_human.png" type="Texture" id=74]
+[ext_resource path="res://resource/shader/blur.shader" type="Shader" id=76]
+[ext_resource path="res://resource/scene/infirmary.gd" type="Script" id=77]
+[ext_resource path="res://resource/scene/emergency.gd" type="Script" id=78]
+[ext_resource path="res://resource/scene/school.gd" type="Script" id=79]
+[ext_resource path="res://resource/scene/rooftop.gd" type="Script" id=80]
+[ext_resource path="res://resource/image/background/emergency_leave.png" type="Texture" id=81]
+[ext_resource path="res://resource/image/background/emergency.png" type="Texture" id=82]
+[ext_resource path="res://resource/image/background/road.png" type="Texture" id=83]
+[ext_resource path="res://resource/image/background/warehouse.png" type="Texture" id=84]
+[ext_resource path="res://resource/image/background/park_real.webp" type="Texture" id=85]
+[ext_resource path="res://resource/image/background/pedestrian_street_christmas.png" type="Texture" id=86]
+[ext_resource path="res://resource/image/background/home_of_treehole.png" type="Texture" id=87]
+[ext_resource path="res://resource/image/background/park_dream.png" type="Texture" id=88]
+[ext_resource path="res://resource/image/background/rooftop.png" type="Texture" id=89]
+[ext_resource path="res://resource/image/background/room_of_eli.webp" type="Texture" id=90]
+[ext_resource path="res://resource/image/background/house_of_family.webp" type="Texture" id=91]
+[ext_resource path="res://resource/image/background/forest.webp" type="Texture" id=92]
+[ext_resource path="res://resource/scene/cafe.gd" type="Script" id=93]
+[ext_resource path="res://resource/image/background/cafe_real.webp" type="Texture" id=94]
+[ext_resource path="res://resource/image/background/cafe_dream.webp" type="Texture" id=95]
+[ext_resource path="res://resource/image/icon/treehole.png" type="Texture" id=96]
+[ext_resource path="res://resource/image/icon/wait_for_you.png" type="Texture" id=97]
+[ext_resource path="res://resource/image/icon/coffee_bean.png" type="Texture" id=98]
+[ext_resource path="res://resource/image/icon/touch_to_start.png" type="Texture" id=99]
+[ext_resource path="res://resource/image/icon/deny.webp" type="Texture" id=100]
+[ext_resource path="res://resource/image/icon/diary.png" type="Texture" id=101]
+[ext_resource path="res://resource/image/icon/birth_day.png" type="Texture" id=102]
+[ext_resource path="res://resource/image/icon/forget.png" type="Texture" id=103]
+[ext_resource path="res://resource/image/tachie/teacher_distort.png" type="Texture" id=104]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends OptionButton
+
+func _ready():
+	var available_languages:Array = GameConfig.get_available_languages()
+	clear()
+	for language in available_languages:
+		add_item(language)
+	return
+
+
+func _on_OptionButton_item_selected(index):
+	GameConfig.set_language(self.get_item_text(index))
+	return
+"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 76 )
+shader_param/radius = 4.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 76 )
+shader_param/radius = 4.0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 76 )
+shader_param/radius = 6.0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _on_Button_pressed():
+	GameControl.net_work()
+	return
+"
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Puzzle" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="touch_to_start" type="Node2D" parent="Puzzle"]
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Sprite" parent="Puzzle/touch_to_start"]
+position = Vector2( 538.126, 962.345 )
+scale = Vector2( 2.05177, 2.05177 )
+texture = ExtResource( 35 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="touch_to_start" type="TextureButton" parent="Puzzle/touch_to_start"]
+margin_left = 55.0
+margin_top = 1080.0
+margin_right = 1045.0
+margin_bottom = 1290.0
+texture_normal = ExtResource( 99 )
+expand = true
+
+[node name="White" type="Sprite" parent="Puzzle/touch_to_start"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 555, 963 )
+scale = Vector2( 5.31622, 5.31622 )
+texture = ExtResource( 39 )
+
+[node name="blank" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Node2D" parent="Puzzle/blank"]
+
+[node name="Blank" type="Sprite" parent="Puzzle/blank/background"]
+position = Vector2( 546, 969.75 )
+scale = Vector2( 5.22838, 5.22838 )
+texture = ExtResource( 39 )
+
+[node name="road" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Road" type="Sprite" parent="Puzzle/road"]
+position = Vector2( 1119.58, 960.565 )
+scale = Vector2( 3.02948, 3.02948 )
+texture = ExtResource( 83 )
+
+[node name="ToForest" type="TextureButton" parent="Puzzle/road"]
+visible = false
+margin_left = 888.0
+margin_top = 1238.0
+margin_right = 1050.0
+margin_bottom = 1400.0
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="ToPark" type="TextureButton" parent="Puzzle/road"]
+visible = false
+margin_left = 204.0
+margin_top = 1748.0
+margin_right = 366.0
+margin_bottom = 1910.0
+texture_normal = ExtResource( 33 )
+expand = true
+flip_h = true
+
+[node name="ToSchool" type="TextureButton" parent="Puzzle/road"]
+visible = false
+margin_left = 26.0
+margin_top = 990.0
+margin_right = 167.0
+margin_bottom = 1131.0
+texture_normal = ExtResource( 33 )
+expand = true
+flip_h = true
+
+[node name="house_of_family" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Road" type="Sprite" parent="Puzzle/house_of_family"]
+position = Vector2( 497.688, 1038.5 )
+scale = Vector2( 4.87957, 4.87957 )
+texture = ExtResource( 91 )
+
+[node name="room_of_eli" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="room" type="Sprite" parent="Puzzle/room_of_eli"]
+position = Vector2( 1597, 964 )
+scale = Vector2( 5.19389, 5.19389 )
+texture = ExtResource( 90 )
+
+[node name="White" type="TextureButton" parent="Puzzle/room_of_eli"]
+visible = false
+margin_left = 508.0
+margin_top = 1194.0
+margin_right = 1047.0
+margin_bottom = 1689.0
+texture_normal = ExtResource( 103 )
+expand = true
+
+[node name="Diary" type="TextureButton" parent="Puzzle/room_of_eli"]
+visible = false
+margin_left = 51.0
+margin_top = 1113.0
+margin_right = 404.0
+margin_bottom = 1466.0
+texture_normal = ExtResource( 101 )
+expand = true
+
+[node name="Window" type="TextureButton" parent="Puzzle/room_of_eli"]
+visible = false
+margin_left = 357.0
+margin_top = 632.0
+margin_right = 820.0
+margin_bottom = 1043.0
+texture_normal = ExtResource( 100 )
+expand = true
+
+[node name="forest" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Blank" type="Sprite" parent="Puzzle/forest"]
+position = Vector2( 689, 960 )
+scale = Vector2( 5.22838, 5.22838 )
+texture = ExtResource( 92 )
+
+[node name="ToHomeOfTreehole" type="TextureButton" parent="Puzzle/forest"]
+margin_left = 147.0
+margin_top = 512.0
+margin_right = 670.0
+margin_bottom = 1252.0
+texture_normal = ExtResource( 96 )
+expand = true
+
+[node name="ToRoad" type="TextureButton" parent="Puzzle/forest"]
+margin_left = 15.0
+margin_top = 1620.0
+margin_right = 177.0
+margin_bottom = 1782.0
+texture_normal = ExtResource( 33 )
+expand = true
+flip_h = true
+
+[node name="home_of_treehole" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HomeOfTreehole" type="Sprite" parent="Puzzle/home_of_treehole"]
+position = Vector2( 930, 967 )
+scale = Vector2( 3.4108, 3.4108 )
+texture = ExtResource( 87 )
+
+[node name="White" type="TextureButton" parent="Puzzle/home_of_treehole"]
+modulate = Color( 1, 1, 1, 0.894118 )
+margin_left = 616.0
+margin_top = 987.0
+margin_right = 1165.0
+margin_bottom = 1613.0
+texture_normal = ExtResource( 97 )
+expand = true
+
+[node name="ToForest" type="TextureButton" parent="Puzzle/home_of_treehole"]
+margin_left = 550.0
+margin_top = 1692.0
+margin_right = 761.0
+margin_bottom = 1903.0
+rect_rotation = 89.9999
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="rooftop" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 80 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rooftop2" type="Sprite" parent="Puzzle/rooftop"]
+position = Vector2( 653.854, 1666.63 )
+scale = Vector2( 2.77134, 2.77134 )
+texture = ExtResource( 89 )
+
+[node name="school" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 79 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="School3" type="Sprite" parent="Puzzle/school"]
+position = Vector2( 1268, 960 )
+scale = Vector2( 4.07917, 4.07917 )
+texture = ExtResource( 37 )
+
+[node name="ToRoad" type="TextureButton" parent="Puzzle/school"]
+margin_left = 500.0
+margin_top = 1694.0
+margin_right = 706.0
+margin_bottom = 1900.0
+rect_rotation = 89.9999
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="infirmary" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 77 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Infirmary" type="Sprite" parent="Puzzle/infirmary"]
+position = Vector2( 1720, 957 )
+scale = Vector2( 6.52878, 6.52878 )
+texture = ExtResource( 36 )
+
+[node name="park" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Node2D" parent="Puzzle/park"]
+
+[node name="park_real" type="Sprite" parent="Puzzle/park/background"]
+position = Vector2( 629, 961 )
+scale = Vector2( 1.96353, 1.96353 )
+texture = ExtResource( 85 )
+
+[node name="park_dream" type="Sprite" parent="Puzzle/park/background"]
+visible = false
+position = Vector2( 628, 959 )
+scale = Vector2( 1.67578, 1.67578 )
+texture = ExtResource( 88 )
+
+[node name="ToPedestrianStreet" type="TextureButton" parent="Puzzle/park"]
+visible = false
+margin_left = 892.0
+margin_top = 976.0
+margin_right = 1060.0
+margin_bottom = 1144.0
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="ToRoad" type="TextureButton" parent="Puzzle/park"]
+visible = false
+margin_left = 14.0
+margin_top = 1354.0
+margin_right = 182.0
+margin_bottom = 1522.0
+texture_normal = ExtResource( 33 )
+expand = true
+flip_h = true
+
+[node name="pedestrian_street" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Node2D" parent="Puzzle/pedestrian_street"]
+
+[node name="pedestrain_street" type="Sprite" parent="Puzzle/pedestrian_street/background"]
+position = Vector2( 504, 961 )
+scale = Vector2( 3.77901, 3.77901 )
+texture = ExtResource( 15 )
+
+[node name="pedestrain_street_christmas" type="Sprite" parent="Puzzle/pedestrian_street/background"]
+visible = false
+position = Vector2( 504, 961 )
+scale = Vector2( 3.77901, 3.77901 )
+texture = ExtResource( 86 )
+
+[node name="blank" type="Sprite" parent="Puzzle/pedestrian_street/background"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 909.664, 970.942 )
+scale = Vector2( 5.6868, 5.6868 )
+texture = ExtResource( 39 )
+
+[node name="ToPark" type="TextureButton" parent="Puzzle/pedestrian_street"]
+visible = false
+margin_left = 524.0
+margin_top = 1719.0
+margin_right = 707.0
+margin_bottom = 1902.0
+rect_rotation = 89.9999
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="ToWarehouse" type="TextureButton" parent="Puzzle/pedestrian_street"]
+visible = false
+margin_left = 376.0
+margin_top = 1102.0
+margin_right = 524.0
+margin_bottom = 1250.0
+rect_rotation = -89.8781
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="ToCafe" type="TextureButton" parent="Puzzle/pedestrian_street"]
+visible = false
+margin_left = 756.0
+margin_top = 894.0
+margin_right = 939.0
+margin_bottom = 1077.0
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="warehouse" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Warehouse" type="Sprite" parent="Puzzle/warehouse"]
+position = Vector2( -589, 956 )
+scale = Vector2( 4.29978, 4.29978 )
+texture = ExtResource( 84 )
+
+[node name="ToPedestrianStreet" type="TextureButton" parent="Puzzle/warehouse"]
+margin_left = 635.0
+margin_top = 1710.0
+margin_right = 826.0
+margin_bottom = 1901.0
+rect_rotation = 89.9999
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="CoffeeBean" type="TextureButton" parent="Puzzle/warehouse"]
+visible = false
+margin_left = -3.0
+margin_top = 924.0
+margin_right = 818.0
+margin_bottom = 1745.0
+texture_normal = ExtResource( 98 )
+expand = true
+
+[node name="cafe" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 93 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Node2D" parent="Puzzle/cafe"]
+
+[node name="cafe_real" type="Sprite" parent="Puzzle/cafe/background"]
+visible = false
+position = Vector2( 336, 956 )
+scale = Vector2( 2.04737, 2.04737 )
+texture = ExtResource( 94 )
+
+[node name="cafe_dream" type="Sprite" parent="Puzzle/cafe/background"]
+position = Vector2( 336, 956 )
+scale = Vector2( 2.04737, 2.04737 )
+texture = ExtResource( 95 )
+
+[node name="ToPedestrianStreet" type="TextureButton" parent="Puzzle/cafe"]
+margin_left = 641.0
+margin_top = 1709.0
+margin_right = 845.0
+margin_bottom = 1913.0
+rect_rotation = 89.9999
+texture_normal = ExtResource( 33 )
+expand = true
+
+[node name="CoffeeMachine" type="TextureButton" parent="Puzzle/cafe"]
+margin_left = 833.0
+margin_top = 919.0
+margin_right = 1079.0
+margin_bottom = 1165.0
+texture_normal = ExtResource( 102 )
+expand = true
+
+[node name="emergency" type="Node2D" parent="Puzzle"]
+visible = false
+script = ExtResource( 78 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Node2D" parent="Puzzle/emergency"]
+
+[node name="emergency" type="Sprite" parent="Puzzle/emergency/background"]
+position = Vector2( 132, 959 )
+scale = Vector2( 3.05558, 3.01392 )
+texture = ExtResource( 82 )
+
+[node name="emergency_leave" type="Sprite" parent="Puzzle/emergency/background"]
+visible = false
+position = Vector2( 132, 959 )
+scale = Vector2( 3.05558, 3.01392 )
+texture = ExtResource( 81 )
+
+[node name="ToDoor" type="TextureButton" parent="Puzzle/emergency"]
+margin_left = -31.0
+margin_top = 891.0
+margin_right = 397.0
+margin_bottom = 1319.0
+texture_normal = ExtResource( 34 )
+expand = true
+
+[node name="InputBlocker" type="Control" parent="Puzzle"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="UpMenu" type="Control" parent="."]
+anchor_right = 1.0
+script = ExtResource( 38 )
+
+[node name="BackGround" type="ColorRect" parent="UpMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -538.0
+margin_top = -225.0
+margin_right = 539.0
+rect_min_size = Vector2( 0, 100 )
+color = Color( 0, 0, 0, 0.403922 )
+
+[node name="DownButton" type="TextureButton" parent="UpMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -105.0
+margin_top = -16.0
+margin_right = 106.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 41 )
+expand = true
+stretch_mode = 5
+
+[node name="Tween" type="Tween" parent="UpMenu/DownButton"]
+
+[node name="UIButton" type="Button" parent="UpMenu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -206.0
+margin_top = -205.0
+margin_right = -14.0
+margin_bottom = -16.0
+text = "菜单"
+
+[node name="ItemList" type="ItemList" parent="UpMenu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = -212.0
+margin_right = 860.0
+margin_bottom = -9.0
+allow_reselect = true
+max_columns = 6
+icon_mode = 0
+fixed_icon_size = Vector2( 128, 128 )
+
+[node name="ItemDetail" type="TextureButton" parent="UpMenu"]
+visible = false
+self_modulate = Color( 0.109804, 0.105882, 0.117647, 0.52549 )
+anchor_right = 1.0
+margin_top = -252.0
+margin_bottom = 1968.0
+texture_normal = ExtResource( 39 )
+expand = true
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="UpMenu/ItemDetail"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -335.0
+margin_top = -500.0
+margin_right = 336.0
+margin_bottom = 284.0
+color = Color( 0.1148, 0.1044, 0.12, 0.843137 )
+
+[node name="Icon" type="TextureRect" parent="UpMenu/ItemDetail"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -271.0
+margin_top = -454.0
+margin_right = 271.0
+margin_bottom = 18.0
+mouse_filter = 0
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 6
+
+[node name="Detail" type="RichTextLabel" parent="UpMenu/ItemDetail"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -289.0
+margin_top = 43.0
+margin_right = 289.0
+margin_bottom = 240.0
+text = "兔子玩偶"
+
+[node name="UI" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.423529 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "用来显示用户界面
+比如菜单、设置、关于等"
+}
+
+[node name="Menu" type="ColorRect" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -203.0
+margin_top = -336.5
+margin_right = 203.0
+margin_bottom = 336.5
+color = Color( 0.2, 0.196078, 0.235294, 1 )
+
+[node name="Buttons" type="VBoxContainer" parent="UI/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -184.0
+margin_top = -307.0
+margin_right = 184.0
+margin_bottom = 307.0
+alignment = 1
+
+[node name="Resume" type="Button" parent="UI/Menu/Buttons"]
+margin_right = 368.0
+margin_bottom = 99.0
+size_flags_vertical = 3
+text = "继续"
+
+[node name="Settings" type="Button" parent="UI/Menu/Buttons"]
+margin_top = 103.0
+margin_right = 368.0
+margin_bottom = 202.0
+size_flags_vertical = 3
+text = "设置"
+
+[node name="About" type="Button" parent="UI/Menu/Buttons"]
+margin_top = 206.0
+margin_right = 368.0
+margin_bottom = 305.0
+size_flags_vertical = 3
+text = "关于"
+
+[node name="Load" type="Button" parent="UI/Menu/Buttons"]
+margin_top = 309.0
+margin_right = 368.0
+margin_bottom = 408.0
+size_flags_vertical = 3
+text = "加载"
+
+[node name="Save" type="Button" parent="UI/Menu/Buttons"]
+margin_top = 412.0
+margin_right = 368.0
+margin_bottom = 511.0
+size_flags_vertical = 3
+text = "保存"
+
+[node name="Save&Quit" type="Button" parent="UI/Menu/Buttons"]
+margin_top = 515.0
+margin_right = 368.0
+margin_bottom = 614.0
+size_flags_vertical = 3
+text = "保存并退出"
+
+[node name="Settings" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.309804, 0.290196, 0.290196, 1 )
+script = ExtResource( 6 )
+
+[node name="Exit" type="Button" parent="UI/Settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -223.5
+margin_top = -4.0
+margin_right = 223.5
+margin_bottom = 194.0
+text = "保存并返回"
+
+[node name="LanguageSelect" type="VBoxContainer" parent="UI/Settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -211.0
+margin_top = -264.0
+margin_right = 211.0
+margin_bottom = -82.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="UI/Settings/LanguageSelect"]
+margin_right = 422.0
+margin_bottom = 51.0
+size_flags_vertical = 0
+text = "语言（未实装）"
+
+[node name="OptionButton" type="OptionButton" parent="UI/Settings/LanguageSelect"]
+margin_top = 55.0
+margin_right = 422.0
+margin_bottom = 182.0
+size_flags_vertical = 3
+script = SubResource( 2 )
+
+[node name="About" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 7 )
+
+[node name="Exit" type="Button" parent="UI/About"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 115.0
+margin_top = 589.0
+margin_right = 413.0
+margin_bottom = 773.0
+text = "返回"
+
+[node name="producer" type="RichTextLabel" parent="UI/About"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 66.0
+margin_top = 746.0
+margin_right = -176.0
+margin_bottom = -848.0
+text = "制作人员
+
+勤杂：蒲灵
+文案：叶"
+
+[node name="CG" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PedestrainStreet" type="TextureRect" parent="CG"]
+visible = false
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 86 )
+expand = true
+stretch_mode = 7
+
+[node name="Hospital" type="TextureRect" parent="CG"]
+visible = false
+modulate = Color( 0.843137, 0.878431, 0.980392, 1 )
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 7
+
+[node name="Black" type="TextureRect" parent="CG"]
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="SchoolCorridor" type="TextureRect" parent="CG"]
+visible = false
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 7
+
+[node name="EliGetKnown" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="WhiteSex" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="WhiteKiss" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="PutEliAway" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="BloodstrainedDoll" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 7
+
+[node name="BlackKiss" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="Push" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="PutCheshAway" type="TextureRect" parent="CG"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 7
+
+[node name="ScreenEffect" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "接受指定特效名称并播放特定的屏幕特效,子节点默认全为隐藏
+其下所有的子节点都有start()接口
+
+所有子节点播放完毕后，GameControl.emit_signal(\"screen_effect_finisged\")"
+}
+
+[node name="PV" parent="ScreenEffect" instance=ExtResource( 8 )]
+visible = false
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "注意屏蔽Viewport的GUI input 属性，否则会导致输入被拦截，无法传递给后续节点"
+}
+
+[node name="Opening" parent="ScreenEffect" instance=ExtResource( 42 )]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wish" parent="ScreenEffect" instance=ExtResource( 43 )]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ending" parent="ScreenEffect" instance=ExtResource( 46 )]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Noise" parent="ScreenEffect" instance=ExtResource( 54 )]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Avoid" parent="ScreenEffect" instance=ExtResource( 45 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fight" parent="ScreenEffect" instance=ExtResource( 44 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Dialog" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "用于接受对话事件列表并显示对话
+
+对话结束后GameControl.emit_signal(\"dialog_finished\")"
+}
+
+[node name="Tachie" type="Control" parent="Dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+
+[node name="black_default" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -122.0
+margin_top = -1075.0
+margin_right = 731.0
+margin_bottom = 576.0
+texture = ExtResource( 68 )
+expand = true
+stretch_mode = 6
+
+[node name="chesh" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -192.0
+margin_top = -1000.0
+margin_right = 798.0
+margin_bottom = 697.0
+texture = ExtResource( 65 )
+expand = true
+stretch_mode = 6
+
+[node name="coffee_machine" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = -1125.0
+margin_right = 592.0
+margin_bottom = -79.0
+texture = ExtResource( 69 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="eli_default" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -182.0
+margin_top = -1384.0
+margin_right = 831.0
+margin_bottom = 445.0
+texture = ExtResource( 70 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="father" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -253.0
+margin_top = -1349.0
+margin_right = 972.0
+margin_bottom = 412.0
+texture = ExtResource( 60 )
+expand = true
+stretch_mode = 6
+
+[node name="mother" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -216.0
+margin_top = -1342.0
+margin_right = 940.0
+margin_bottom = 372.0
+texture = ExtResource( 59 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="mr_rabbit" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -298.0
+margin_top = -1311.0
+margin_right = 918.0
+margin_bottom = 328.0
+texture = ExtResource( 64 )
+expand = true
+stretch_mode = 6
+
+[node name="stranger_a" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -266.0
+margin_top = -1458.0
+margin_right = 934.0
+margin_bottom = 493.0
+texture = ExtResource( 57 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="stranger_a_headless" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -281.0
+margin_top = -1452.0
+margin_right = 945.0
+margin_bottom = 473.0
+texture = ExtResource( 66 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="stranger_a_human" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -276.0
+margin_top = -1493.0
+margin_right = 950.0
+margin_bottom = 516.0
+texture = ExtResource( 62 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="stranger_b" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -295.0
+margin_top = -1571.0
+margin_right = 973.0
+margin_bottom = 529.0
+texture = ExtResource( 72 )
+expand = true
+stretch_mode = 6
+
+[node name="stranger_b_human" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -325.0
+margin_top = -1520.0
+margin_right = 1012.0
+margin_bottom = 432.0
+texture = ExtResource( 74 )
+expand = true
+stretch_mode = 6
+
+[node name="stranger_c" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -247.0
+margin_top = -1388.0
+margin_right = 928.0
+margin_bottom = 450.0
+texture = ExtResource( 71 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="teacher" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -291.0
+margin_top = -1586.0
+margin_right = 1020.0
+margin_bottom = 515.0
+texture = ExtResource( 58 )
+expand = true
+stretch_mode = 6
+
+[node name="teacher_distort" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -291.0
+margin_top = -1586.0
+margin_right = 1088.0
+margin_bottom = 624.0
+texture = ExtResource( 104 )
+expand = true
+stretch_mode = 6
+
+[node name="white_default" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 57.0
+margin_top = -1349.0
+margin_right = 704.0
+margin_bottom = 410.0
+texture = ExtResource( 67 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="test" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -222.0
+margin_top = -1074.0
+margin_right = 975.0
+margin_bottom = 431.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="pulin" type="TextureRect" parent="Dialog/Tachie"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -437.0
+margin_top = -1513.0
+margin_right = 1088.0
+margin_bottom = 439.0
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="Text" type="VBoxContainer" parent="Dialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -489.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="NamePanel" type="ColorRect" parent="Dialog/Text"]
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 300, 70 )
+size_flags_horizontal = 0
+color = Color( 0, 0, 0, 0.376471 )
+
+[node name="Label" type="Label" parent="Dialog/Text/NamePanel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 19.0
+margin_top = -25.0
+margin_right = 219.0
+margin_bottom = 26.0
+text = "测试名称"
+
+[node name="TextPanel" type="ColorRect" parent="Dialog/Text"]
+margin_top = 74.0
+margin_right = 1080.0
+margin_bottom = 489.0
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.415686 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialog/Text/TextPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 8.0
+margin_right = -21.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 0, 6.685 )
+size_flags_vertical = 3
+text = "测试
+测试用例"
+
+[node name="TextShowTimer" type="Timer" parent="Dialog/Text/TextPanel/RichTextLabel"]
+wait_time = 0.05
+
+[node name="BGM" type="Node" parent="."]
+script = ExtResource( 52 )
+
+[node name="Relax" type="Node" parent="BGM"]
+
+[node name="Dreamin" type="AudioStreamPlayer" parent="BGM/Relax"]
+stream = ExtResource( 49 )
+script = ExtResource( 53 )
+
+[node name="missing my ntpp" type="AudioStreamPlayer" parent="BGM/Relax"]
+stream = ExtResource( 47 )
+script = ExtResource( 53 )
+
+[node name="有些答案不必等待" type="AudioStreamPlayer" parent="BGM/Relax"]
+stream = ExtResource( 50 )
+script = ExtResource( 53 )
+
+[node name="Unease" type="Node" parent="BGM"]
+
+[node name="90_Atmospheric_F Minor" type="AudioStreamPlayer" parent="BGM/Unease"]
+stream = ExtResource( 51 )
+script = ExtResource( 53 )
+
+[node name="Soaring" type="AudioStreamPlayer" parent="BGM/Unease"]
+stream = ExtResource( 48 )
+script = ExtResource( 53 )
+
+[node name="Ólafur Arnalds - Endalaus II" type="AudioStreamPlayer" parent="BGM/Unease"]
+stream = ExtResource( 16 )
+script = ExtResource( 53 )
+
+[node name="Regret" type="Node" parent="BGM"]
+
+[node name="Ficus" type="AudioStreamPlayer" parent="BGM/Regret"]
+stream = ExtResource( 55 )
+
+[node name="NetWork" type="Button" parent="."]
+visible = false
+margin_right = 12.0
+margin_bottom = 57.0
+text = "NetWork"
+script = SubResource( 3 )
+
+[connection signal="pressed" from="Puzzle/touch_to_start/touch_to_start" to="Puzzle/touch_to_start" method="_on_touch_to_start_pressed"]
+[connection signal="pressed" from="Puzzle/road/ToForest" to="Puzzle/road" method="_on_ToForest_pressed"]
+[connection signal="pressed" from="Puzzle/road/ToPark" to="Puzzle/road" method="_on_ToPark_pressed"]
+[connection signal="pressed" from="Puzzle/road/ToSchool" to="Puzzle/road" method="_on_ToSchool_pressed"]
+[connection signal="pressed" from="Puzzle/room_of_eli/White" to="Puzzle/room_of_eli" method="_on_White_pressed"]
+[connection signal="pressed" from="Puzzle/room_of_eli/Diary" to="Puzzle/room_of_eli" method="_on_Diary_pressed"]
+[connection signal="pressed" from="Puzzle/room_of_eli/Window" to="Puzzle/room_of_eli" method="_on_Window_pressed"]
+[connection signal="pressed" from="Puzzle/forest/ToHomeOfTreehole" to="Puzzle/forest" method="_on_ToHomeOfTreehole_pressed"]
+[connection signal="pressed" from="Puzzle/forest/ToRoad" to="Puzzle/forest" method="_on_ToRoad_pressed"]
+[connection signal="pressed" from="Puzzle/home_of_treehole/White" to="Puzzle/home_of_treehole" method="_on_White_pressed"]
+[connection signal="pressed" from="Puzzle/home_of_treehole/ToForest" to="Puzzle/home_of_treehole" method="_on_ToForest_pressed"]
+[connection signal="pressed" from="Puzzle/school/ToRoad" to="Puzzle/school" method="_on_ToRoad_pressed"]
+[connection signal="pressed" from="Puzzle/park/ToPedestrianStreet" to="Puzzle/park" method="_on_ToPedestrianStreet_pressed"]
+[connection signal="pressed" from="Puzzle/park/ToRoad" to="Puzzle/park" method="_on_ToRoad_pressed"]
+[connection signal="pressed" from="Puzzle/pedestrian_street/ToPark" to="Puzzle/pedestrian_street" method="_on_ToPark_pressed"]
+[connection signal="pressed" from="Puzzle/pedestrian_street/ToWarehouse" to="Puzzle/pedestrian_street" method="_on_ToWarehouse_pressed"]
+[connection signal="pressed" from="Puzzle/pedestrian_street/ToCafe" to="Puzzle/pedestrian_street" method="_on_ToCafe_pressed"]
+[connection signal="pressed" from="Puzzle/warehouse/ToPedestrianStreet" to="Puzzle/warehouse" method="_on_ToPedestrianStreet_pressed"]
+[connection signal="pressed" from="Puzzle/warehouse/CoffeeBean" to="Puzzle/warehouse" method="_on_CoffeeBean_pressed"]
+[connection signal="pressed" from="Puzzle/cafe/ToPedestrianStreet" to="Puzzle/cafe" method="_on_ToPedestrianStreet_pressed"]
+[connection signal="pressed" from="Puzzle/cafe/CoffeeMachine" to="Puzzle/cafe" method="_on_CoffeeMachine_pressed"]
+[connection signal="pressed" from="Puzzle/emergency/ToDoor" to="Puzzle/emergency" method="_on_ToDoor_pressed"]
+[connection signal="pressed" from="UpMenu/DownButton" to="UpMenu" method="_on_DownButton_pressed"]
+[connection signal="pressed" from="UpMenu/UIButton" to="UI" method="_on_UIButton_pressed"]
+[connection signal="item_selected" from="UpMenu/ItemList" to="UpMenu" method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="UpMenu/ItemDetail" to="UpMenu" method="_on_ItemDetail_pressed"]
+[connection signal="pressed" from="UI/Menu/Buttons/Resume" to="UI" method="_on_Resume_pressed"]
+[connection signal="pressed" from="UI/Menu/Buttons/Settings" to="UI" method="_on_Settings_pressed"]
+[connection signal="pressed" from="UI/Menu/Buttons/About" to="UI" method="_on_About_pressed"]
+[connection signal="pressed" from="UI/Menu/Buttons/Load" to="UI" method="_on_Load_pressed"]
+[connection signal="pressed" from="UI/Menu/Buttons/Save" to="UI" method="_on_Save_pressed"]
+[connection signal="pressed" from="UI/Menu/Buttons/Save&Quit" to="UI" method="_on_SaveQuit_pressed"]
+[connection signal="pressed" from="UI/Settings/Exit" to="UI/Settings" method="_on_SaveExit_pressed"]
+[connection signal="item_selected" from="UI/Settings/LanguageSelect/OptionButton" to="UI/Settings/LanguageSelect/OptionButton" method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="UI/About/Exit" to="UI/About" method="_on_Exit_pressed"]
+[connection signal="timeout" from="Dialog/Text/TextPanel/RichTextLabel/TextShowTimer" to="Dialog/Text" method="_on_TextShowTimer_timeout"]
+[connection signal="pressed" from="NetWork" to="NetWork" method="_on_Button_pressed"]

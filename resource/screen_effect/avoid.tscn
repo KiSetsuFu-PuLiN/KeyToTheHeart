@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resource/image/icon/eli.png" type="Texture" id=1]
+[ext_resource path="res://resource/image/icon/heart.webp" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var neg_text_list:Array = []
+var pos_text_list:Array = []
+export var pos_possibility:float = 0.3
+export var time_gap:float = 1
+export var life_count:int = 3
+export var in_out_duration:float = 2
+func _ready():
+	for neg_text_dict in FileManager.parse_csv_file(\"res://resource/csv_sheet/avoid_game_text_sheet/nag.csv\"):
+		neg_text_list.append(neg_text_dict[\"text\"])
+	for pos_text_dict in FileManager.parse_csv_file(\"res://resource/csv_sheet/avoid_game_text_sheet/pos.csv\"):
+		pos_text_list.append(pos_text_dict[\"text\"])
+	randomize()
+	self.set_process_input(false)
+	self.set_process(false)
+	# test
+	#start()
+	return
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		$player.position += event.relative
+		$player.position.x = clamp($player.position.x,0,self.rect_size.x)
+		$player.position.y = clamp($player.position.y,0,self.rect_size.y)
+	return
+
+export var enemy:PackedScene = preload(\"res://resource/screen_effect/avoid/text.tscn\")
+var timer:float = 0
+func _process(delta):
+	timer += delta
+	if timer >= time_gap:
+		timer = 0
+		$Path2D/PathFollow2D.unit_offset = randf()
+		var instance:Area2D =  enemy.instance()
+		if randf()<pos_possibility:
+			instance.quality = true
+			instance.text = pos_text_list[randi()%pos_text_list.size()]
+		else:
+			instance.quality = false
+			instance.text = neg_text_list[randi()%neg_text_list.size()]
+		instance.position = $Path2D/PathFollow2D.position
+		self.add_child(instance)
+		time_gap *= 0.99
+		pos_possibility *= 0.99
+	return
+
+
+var start_time:float
+var stop_time:float
+func start()->void:
+	yield(get_tree().create_tween().tween_property(self,\"modulate\",Color(1,1,1,1),in_out_duration),\"finished\")
+	set_process_input(true)
+	set_process(true)
+	start_time = Time.get_ticks_usec()
+	return
+
+func _on_player_area_entered(area):
+	if area.quality:
+		life_count += 1
+		area.queue_free()
+	else:
+		if life_count > 0:
+			life_count -= 1
+	$Label.text = \"x%s\"%life_count
+	if life_count == 0:
+		stop_time = Time.get_ticks_usec()
+		set_process_input(false)
+		yield(get_tree().create_tween().tween_property(self,\"modulate\",Color(1,1,1,0),in_out_duration),\"finished\")
+		set_process(false)
+		self.visible = false
+		GameControl.emit_signal(\"screen_effect_finished\")
+		$\"/root/Main\".Avoid = (stop_time - start_time)/10000
+	return
+"
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 29.3958
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1080, 0, 0, 0, 0, 0, 1080, 1920 )
+}
+
+[node name="Avoid" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="player" type="Area2D" parent="."]
+position = Vector2( 374, 625 )
+scale = Vector2( 1.90625, 1.90625 )
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="player"]
+position = Vector2( -4.19672, -7.34427 )
+scale = Vector2( 0.696721, 0.696721 )
+texture = ExtResource( 1 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 1080, 0 )
+rotation = 1.5708
+
+[node name="Label" type="Label" parent="."]
+margin_left = 93.0
+margin_top = 21.0
+margin_right = 186.0
+margin_bottom = 72.0
+text = "x3"
+
+[node name="TextureRect" type="TextureRect" parent="Label"]
+margin_left = -64.0
+margin_top = 6.0
+margin_right = -15.0
+margin_bottom = 53.0
+texture = ExtResource( 2 )
+expand = true
+
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
